@@ -14,6 +14,7 @@ def cfb_encrypt(message, key, iv):
     bloc_message = message[position:position + 16]
     bloc_chiffre = bytes([bloc_message[i] ^ bloc_aes[i] for i in range(len(bloc_message))])
     resultat.extend(bloc_chiffre)
+    
     if len(bloc_chiffre) == 16:
       register = bloc_chiffre
     position += 16
@@ -33,6 +34,7 @@ def cfb_decrypt(message_chiffre, key, iv):
     bloc_chiffre = message_chiffre[position:position + 16]
     bloc_claire = bytes([bloc_chiffre[i] ^ bloc_aes[i] for i in range(len(bloc_chiffre))])
     resultat.extend(bloc_claire)
+    
     if len(bloc_chiffre) == 16:
       register = bloc_chiffre
     position += 16
